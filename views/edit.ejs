@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+    <link rel="stylesheet" href="/styles/edit.css">
+</head>
+<body>
+    <div class="container">
+        <img src="https://covers.openlibrary.org/b/isbn/<%= book.picture %>.jpg" style="width: 200px; height: 300px;" /> </li>
+        <form class="edit" action="/edit" method="post">
+            <input type="hidden" name="updatedBookId" value="<%= book.id %>">
+            
+            <label for="input<%=book.id%>">Title:</label>
+            <input id="input<%=book.id%>" type="text" name="updatedBookTitle" value="<%= book.title %>" autocomplete="off"
+              autofocus="true" />
+    
+              <label for="input<%=book.id%>">Description:</label>
+              <input id="input<%=book.id%>" type="text" name="updatedBookDescription" value="<%= book.description %>" autocomplete="off"
+              autofocus="true" />
+    
+              <label for="input<%=book.id%>">Picture:</label>
+              <input id="input<%=book.id%>" type="text" name="updatedBookPicture" value="<%= book.picture %>" autocomplete="off"
+              autofocus="true"/>
+    
+            <button id="done<%=book.id%>" class="edit" type="submit" >Save</button>
+        </form>
+    </div>
+</body>
+</html>

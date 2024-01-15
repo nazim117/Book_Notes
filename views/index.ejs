@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Notes</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <form action="/add" method="post">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" name="title" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input type="text" name="description" placeholder="Description">
+            </div>
+            <div class="form-group">
+                <label for="isbn">ISBN:</label>
+                <input type="text" name="isbn" placeholder="ISBN">
+            </div>
+            <button type="submit" class="form-submit">Submit</button>
+        </form>
+        <% if(locals.books){ %>
+            <ul>
+                <% for(var i = 0; i < books.length; i++) { %>
+                    <div class="book">
+                        <li> <img src="https://covers.openlibrary.org/b/isbn/<%= books[i].picture %>.jpg" style="width: 200px; height: 300px;" /> </li>
+                        <li>Title: <%= books[i].title %></li>
+                        <li>Description: <%= books[i].description %></li>
+                        <a href="/edit/<%= books[i].id %>">Edit</a>
+                        <form action="/delete" method="post">
+                            <label>Delete</label>
+                            <button type="submit" name="deleteBookId" value="<%= books[i].id %>" style="cursor: pointer;"></button>
+                        </form>
+                    </div>
+
+                <% } %>
+            </ul>
+        <% } else { %>
+            <h1>Write your first read book</h1>
+            <% } %>
+    </div>
+</body>
+</html>
